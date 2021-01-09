@@ -3,7 +3,7 @@
 <html lang="en"> 
 <head> 
     <meta charset="UTF-8">
-    <title>pan upload </title>
+    <title>cloud ocr upload </title>
     <style>
         header, .full-width 
         {
@@ -24,7 +24,7 @@
 <body>
     <header>
         <div class="wrap">
-            <h1>Pan Card Reader</h1> 
+            <h1>Document Reader</h1> 
         </div>
     </header>
 
@@ -40,6 +40,10 @@
         {{ form.pan_image }} 
         <button type="submit">Upload</button> 
     </form>
+    <!--<form method="post">
+        {% csrf_token %}
+        <button type="submit" name="run_script">Run script</button>
+    </form>-->
     </div>
 
 </body> 

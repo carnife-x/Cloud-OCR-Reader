@@ -9,7 +9,7 @@ from django.views.generic import DetailView
 from ocr_app.models import Reader
 
 global dic
-dic={'name': 'name', 'DOB': 'DOB', 'pan':'pan'}
+dic={'data': 'data'}
 
 class OCR_Root(TemplateView):
 #view for OCR home template
@@ -19,16 +19,30 @@ class OCR_Root(TemplateView):
     def post(self, request, *args, **kwargs):
 
         form = OCRForm(request.POST, request.FILES)
+        print(request.POST)
 
         if form.is_valid():
-            obj,name,DOB,pan = form.save()
-            dic['name']=name
-            dic['DOB']=DOB
-            dic['pan']=pan
+            obj,data = form.save()
+            dic['data']=data
             return HttpResponseRedirect(reverse_lazy('pan_display', kwargs={'pk': obj.id}))
 
+
+        if 'run_script' in request.POST:
+
+            # import function to run
+            from ocr_app.clear_media import test
+
+            # call function
+            test() 
+
+            # return user to required page
+           
+
+
         context = self.get_context_data(form=form)
-        return self.render_to_response(context)     
+        return self.render_to_response(context)
+
+         
 
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)
@@ -36,12 +50,12 @@ class OCR_Root(TemplateView):
 
 class PanDetails(DetailView):
 #view for Pan card display template
-    var1 = dic['name']
     model = Reader
     template_name = 'pan_display.html'
     context_object_name = 'ocr'
 
     def get_context_data(self, **kwargs):
         context = super(PanDetails, self).get_context_data(**kwargs)
-        context.update({'nam': dic['name'], 'DO': dic['DOB'], 'pa': dic['pan']})
+        context.update({'content': dic['data']})
         return context
+

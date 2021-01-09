@@ -25,7 +25,7 @@ SECRET_KEY = ')bxlqqdk@-kc!5@(8lc^y5_hslok4zl-xs*u75#^9#sj0a8d6e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['671unn74s3.execute-api.ap-south-1.amazonaws.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'ocr_app','django_s3_sqlite','zappa_django_utils'
+    'ocr_app',
 ]
 
 MIDDLEWARE = [
@@ -77,9 +77,8 @@ WSGI_APPLICATION = 'ocr_main.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django_s3_sqlite',
-        'NAME': 'sqlite.db',
-        "BUCKET": "zappa-fwltpxtmp",
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -124,5 +123,5 @@ STATIC_URL = '/staticfiles/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'staticfiles'), ) 
 STATIC_ROOT = os.path.join(BASE_DIR, '/')
 
-MEDIA_URL = '/tmp/' 
-MEDIA_ROOT = '/tmp/'
+MEDIA_URL = '/media/' 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

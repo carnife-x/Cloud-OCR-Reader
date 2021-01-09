@@ -17,7 +17,6 @@ def parse_text(results):
     return text
 #this function calls the Azure Api to process the image and extract information from it
 def get_text(pathToImage):
-    pathToImage=pathToImage[9:]  
     print('Processing: ' + pathToImage)
     headers  = {
         'Ocp-Apim-Subscription-Key': API_KEY,
@@ -35,20 +34,14 @@ def get_text(pathToImage):
 #merges the parse_text and get_text to extract the relavant details
 def handler(filename):
     text = ''
-    if filename.endswith((".jpg",".png",".jpeg","jfif")): 
+    if filename.endswith((".jpg",".png",".jpeg")): 
         pathToImage = '{0}/{1}'.format(DIR, filename)
         results = get_text(pathToImage)
         text += parse_text(results)
         data=text.splitlines()
-        name=data[1]
-        DOB=data[3]
-        pan=data[5]
-        if len(data)>8:
-            name=data[5]
-            DOB=data[8]
-            pan=data[3]
+        
 
-    return name,DOB,pan
+    return data
 
 
 
