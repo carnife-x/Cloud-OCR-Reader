@@ -2,8 +2,8 @@ import os
 import json
 import requests
 
-API_KEY = '7932418f651547e7bd2caa731c339290'
-ENDPOINT = 'https://iit-ocr.cognitiveservices.azure.com/vision/v3.1/ocr'
+API_KEY = 'YOURAPIKEY'
+ENDPOINT = 'https://yourendpoint.azure.com/vision/v3.1/ocr'
 DIR = os.getcwd()
 
 #used to extract text from results
