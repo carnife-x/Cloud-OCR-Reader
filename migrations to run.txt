@@ -1,0 +1,3 @@
+zappa manage dev migrate
+zappa manage dev s3_sqlite_vacuum
+zappa update dev

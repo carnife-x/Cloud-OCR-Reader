@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head> 
+        
+        <meta charset="UTF-8">
+        <title>pan upload </title>
+        <style>
+        header, .full-width 
+        {
+            width: 100%;
+            background: rgb(3, 86, 141);
+                }
+                .wrap 
+        {
+            width: 80%;
+            max-width: 50em;
+            margin: 0 auto;
+            padding: 0.25em 0.625em;
+            text-align:center;
+        }
+
+        </style>
+    </head> 
+<body>
+    <header>
+
+        <div class="wrap">
+            <h1>Pan Card Reader</h1> 
+        </div>
+
+    </header>
+
+    <div class="wrap">
+        <br>
+        <br>
+
+       
+    <img src="{{"/dev"|add:ocr.pan_image.url}}" alt="Smiley face" width="500" height="320">
+    <br />
+    <h1>Name: {{ nam }}</h1>
+    <h1>Date of Birth: {{ DO }}</h1>
+    <h1>PAN number: {{ pa }}</h1>
+
+    <form>
+        <button formaction="{% url 'home' %}">Submit new Image</button>
+      </form>
+    </div>
+</body>
+
+</html>
