@@ -1,15 +1,3 @@
----
-layout: post
-title:  "Serverless Cloud Document Reader"
-date:   2021-01-04
-excerpt: "Customisable music reactive light strip with three modes"
-project: true
-tag:
-- arduino
-- moon
-
-comments: true
----
 
 # Summary
 
